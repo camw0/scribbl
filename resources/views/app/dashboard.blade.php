@@ -2,6 +2,11 @@
 
 @section('content')
     <section class="p-10 md-p-l5">
+        @if(session('success'))
+            <p class="fw-600 white">
+                {!! session('success') !!}
+            </p>
+        @endif
         <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
             Welcome to <span class="border-b bc-indigo bw-4">Scribbl</span>
         </h2>

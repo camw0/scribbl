@@ -10,6 +10,8 @@
                 <p class="fw-600 indigo-lightest opacity-30">
                     Hey, {{ Auth::user()->name }}! 
                     <br/>
+                    Total scribbls: {{ Auth::user()->total_scribbls }}
+                    <br/>
                     ID: {{ Auth::user()->id }}
                     <br/>
                     Email: {{ Auth::user()->email }}

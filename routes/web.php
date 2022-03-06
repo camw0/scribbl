@@ -17,9 +17,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('in
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('app.dashboard');
 
-Route::get('/account', [App\Http\Controllers\Dashboard\AccountController::class, 'index'])->name('account');
+Route::get('/account', [App\Http\Controllers\Dashboard\AccountController::class, 'index'])->name('app.account');
 
-Route::get('/create', [App\Http\Controllers\Dashboard\CreateController::class, 'index'])->name('create');
+Route::get('/create', [App\Http\Controllers\Dashboard\CreateController::class, 'index'])->name('app.create');
+Route::post('/create', [App\Http\Controllers\Dashboard\CreateController::class, 'create'])->name('app.create.post');
 

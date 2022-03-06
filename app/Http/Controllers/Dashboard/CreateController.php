@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class CreateController extends Controller
@@ -24,15 +25,19 @@ class CreateController extends Controller
      */
     public function index()
     {
-        return view('app/create');
+        return view('app.create');
     }
 
     /**
-     * Show the application dashboard.
+     * Create the Scribbl and update the user's total scribbls.
      *
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('app/dashboard');
+        $craw = DB::table('users')->select('total_scribbls')->where('id', '=', $request->user()->id)->get();
+        $c = $craw[0]->total_scribbls;
+        DB::table('users')->where('id', '=', $request->user()->id)->update(['total_scribbls' => $c + 1]);
+
+        return redirect()->route('app.dashboard');
     }
 }

@@ -34,6 +34,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * Default values for specific fields in the database.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'total_scribbls' => 0,
+    ];
+
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
