@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ config('app.name') }} &bull; Dashboard</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
-    </head>
-    <body class="bg-black muli">
+@extends('layouts.app')
+
+@section('content')
         <section class="p-10 md-p-l5">
             <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
                 Welcome to <span class="border-b bc-indigo bw-4">Scribbl</span>
-                <a 
-                    href="{{ route('logout') }}"
-                    onclick="
-                        event.preventDefault();
-                        document.getElementById('logout-form').submit();"
-                >
-                    <button class="button-md bg-indigo indigo-lightest bw-0 fw-300 fs-s3">Sign out</button>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
             </h2>
             <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
                 <div class="w-100pc md-w-100pc">
@@ -30,8 +12,35 @@
                         <br/>
                         Thanks for being a super super early adopter (or curious person from the future!).
                     </p>
+                    <section class="p-0 md-p-5">
+                        <div class="flex flex-wrap">
+                            <div class="w-100pc md-w-33pc p-10">
+                                <a href="#" class="block no-underline p-5 br-8 bg-indigo-lightest-10 hover-scale-up-1 ease-300">
+                                    <p class="fw-600 white fs-m3 mt-3">
+                                        Shopping List 22/02/2022
+                                    </p>
+                                    <div class="indigo fs-s3 italic after-arrow-right my-4">2 hours ago by Cam </div>
+                                </a>
+                            </div>
+                            <div class="w-100pc md-w-33pc p-10">
+                                <a href="#" class="block no-underline p-5 br-8 bg-indigo-lightest-10 hover-scale-up-1 ease-300">
+                                    <p class="fw-600 white fs-m3 mt-3">
+                                        A list of good things in the world
+                                    </p>
+                                    <div class="indigo fs-s3 italic after-arrow-right my-4">15 months ago by Katelyn </div>
+                                </a>
+                            </div>
+                            <div class="w-100pc md-w-33pc p-10">
+                                <a href="#" class="block no-underline p-5 br-8 bg-indigo-lightest-10 hover-scale-up-1 ease-300">
+                                    <p class="fw-600 white fs-m3 mt-3">
+                                        github.com/cmrxnn/scribbl
+                                    </p>
+                                    <div class="indigo fs-s3 italic after-arrow-right my-4">yesterday by GitHub </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
-    </body>
-</html>
+@endsection

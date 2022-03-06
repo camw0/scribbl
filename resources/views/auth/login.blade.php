@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ config('app.name') }} &bull; Login</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
-    </head>
-    <body class="bg-black muli">
+@extends('layouts.app')
+
+@section('content')
         <section class="p-10 md-p-l5">
             <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
                 Sign in to <span class="border-b bc-indigo bw-4">Scribbl</span>
@@ -69,5 +62,4 @@
                 </form>
             </div>
         </section>
-    </body>
-</html>
+@endsection
