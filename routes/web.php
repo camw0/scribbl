@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/account', [App\Http\Controllers\Dashboard\AccountController::class, 'index'])->name('account');
+
+Route::get('/create', [App\Http\Controllers\Dashboard\CreateController::class, 'index'])->name('create');
+
