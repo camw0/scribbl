@@ -26,12 +26,13 @@
                     Time to scribbl!
                 </h3>
                 <br/>
-                <input 
+                <textarea
+                    rows="5"
                     id="description"
                     name="description"
-                    type="text"
                     class="input-lg min-h-50vh w-100pc bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-m6"
                 >
+                </textarea>
                 <hr class="bc-indigo"/>
                 <br/>
                 <button 
