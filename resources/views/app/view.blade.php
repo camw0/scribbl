@@ -10,5 +10,6 @@
                 {{ $scribbl->description }}
             </h2>
         </div>
+        <p class="fs-s1 mx-3 py-3 indigo no-underline">Last updated {{ $scribbl->updated_at->diffForHumans() }} by {{ Auth::user()->name }}</p>
     </section>
 @endsection
