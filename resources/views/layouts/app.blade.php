@@ -31,12 +31,12 @@
                     @endif
                 @else
                     <a href="/dashboard" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Your Scribbls</a>
-                    <a href="/account" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Account</a>
+                    <a href="/dashboard/account" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Account</a>
                     <a href="{{ route('logout') }}" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         Sign out
                     </a>
-                    <a href="/create" class="button bg-white black fw-600 no-underline mx-5">Create</a>
+                    <a href="/dashboard/create" class="button bg-white black fw-600 no-underline mx-5">Create</a>
                 @endguest
             </div>
         </nav>

@@ -6,7 +6,7 @@ use App\Models\Scribbl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class ViewController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,15 +18,14 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    
     /**
-     * Show the application dashboard.
+     * Show the view page for Scribbls.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $scribbls = Scribbl::all();
-        return view('app.dashboard', ['scribbls' => $scribbls]);
+        $scribbl = Scribbl::find($request->id);
+        return view('app.view', ['scribbl' => $scribbl]);
     }
 }
