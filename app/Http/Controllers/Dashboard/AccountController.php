@@ -28,4 +28,22 @@ class AccountController extends Controller
         $user = Auth::user();
         return view('app.account', ['user' => $user]);
     }
+
+    /**
+     * Update the authenticated users' email.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function updateEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|string|max:255',
+        ]);
+
+        $u = Auth::user();
+        $u->email = $request['email'];
+        $u->save();
+
+        return redirect()->route('app.account', ['user' => $u]);
+    }
 }

@@ -36,7 +36,7 @@
                         <div class="w-100pc md-w-50pc p-3">
                             <form
                                 method="POST"
-                                action="{{ route('app.account.update.email') }}"
+                                action="{{ route('app.account.email') }}"
                                 class="block p-5 bg-indigo-lightest-10">
                                 @csrf
                                     <p class="fw-600 white fs-l2 mt-3">

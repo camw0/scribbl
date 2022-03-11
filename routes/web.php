@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Dashboard\ViewController;
+use App\Http\Controllers\Dashboard\DeleteController;
+use App\Http\Controllers\Dashboard\CreateController;
+use App\Http\Controllers\Dashboard\AccountController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +19,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('app.dashboard');
+Route::prefix('dashboard')->group(function () {
 
-Route::get('/dashboard/account', [App\Http\Controllers\Dashboard\AccountController::class, 'index'])->name('app.account');
-Route::post('/dashboard/account/update/email', [App\Http\Controllers\Auth\UpdateController::class, 'updateEmail'])->name('app.account.update.email');
+    Route::get('/', [DashboardController::class, 'index'])->name('app.dashboard');
 
-Route::get('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController::class, 'index'])->name('app.create');
-Route::post('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController::class, 'create'])->name('app.create.post');
+    Route::prefix('account')->group(function () {
+        Route::get('/', [AccountController::class, 'index'])->name('app.account');
+        Route::post('/email', [AccountController::class, 'updateEmail'])->name('app.account.email');
+    });
 
-Route::get('/dashboard/view/{id}', [App\Http\Controllers\Dashboard\ViewController::class, 'index'])->name('app.view');
-Route::get('/dashboard/view/error', [App\Http\Controllers\Dashboard\ViewController::class, 'index'])->name('app.unauthorised');
+    Route::prefix('create')->group(function () {
+        Route::get('/create', [CreateController::class, 'index'])->name('app.create');
+    });
 
-Route::post('/dashboard/delete/{id}', [App\Http\Controllers\Dashboard\DeleteController::class, 'index'])->name('app.delete');
+    Route::prefix('view')->group(function () {
+        Route::get('/{id}', [ViewController::class, 'index'])->name('app.view');
+        Route::get('/error', [ViewController::class, 'index'])->name('app.unauthorised');
+    });
+
+    Route::prefix('delete')->group(function () {
+        Route::post('/{id}', [DeleteController::class, 'index'])->name('app.delete');
+    });
+});
