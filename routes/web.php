@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('app.dashboard');
 
 Route::get('/dashboard/account', [App\Http\Controllers\Dashboard\AccountController::class, 'index'])->name('app.account');
+Route::post('/dashboard/account/update/email', [App\Http\Controllers\Auth\UpdateController::class, 'updateEmail'])->name('app.account.update.email');
 
 Route::get('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController::class, 'index'])->name('app.create');
 Route::post('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController::class, 'create'])->name('app.create.post');
