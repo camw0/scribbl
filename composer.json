@@ -1,19 +1,17 @@
 {
-    "name": "laravel/laravel",
+    "name": "cmrxnn/scribbl",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": " Scribbl is a fast, minimalistic note-taking app built in Laravel.",
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
-        "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "icanhazstring/composer-unused": "^0.8.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
