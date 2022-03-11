@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Dashboard\ViewController;
-use App\Http\Controllers\Dashboard\DeleteController;
-use App\Http\Controllers\Dashboard\CreateController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Dashboard\AccountController;
+use App\Http\Controllers\Dashboard\ScribblController;
 use App\Http\Controllers\Dashboard\DashboardController;
 
 /*
@@ -19,7 +17,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Auth::routes();
 
@@ -33,15 +31,16 @@ Route::prefix('dashboard')->group(function () {
     });
 
     Route::prefix('create')->group(function () {
-        Route::get('/create', [CreateController::class, 'index'])->name('app.create');
+        Route::get('/', [ScribblController::class, 'viewCreate'])->name('app.create');
+        Route::post('/', [ScribblController::class, 'create'])->name('app.create.new');
     });
 
     Route::prefix('view')->group(function () {
-        Route::get('/{id}', [ViewController::class, 'index'])->name('app.view');
-        Route::get('/error', [ViewController::class, 'index'])->name('app.unauthorised');
+        Route::get('/{id}', [ScribblController::class, 'view'])->name('app.view');
+        Route::get('/error', [ScribblController::class, 'view'])->name('app.unauthorised');
     });
 
     Route::prefix('delete')->group(function () {
-        Route::post('/{id}', [DeleteController::class, 'index'])->name('app.delete');
+        Route::post('/{id}', [ScribblController::class, 'delete'])->name('app.delete');
     });
 });

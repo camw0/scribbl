@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class CreateController extends Controller
+class ScribblController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,11 +21,28 @@ class CreateController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the view page for Scribbls.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function view(Request $request)
+    {
+        $scribbl = Scribbl::find($request->id);
+        $user = Auth::user();
+
+        if (Auth::user()->id !== $scribbl->owner) {
+            return view('app.unauthorised');
+        } else {
+            return view('app.view', ['scribbl' => $scribbl, 'user' => $user]);
+        };
+    }
+
+    /**
+     * Show the creation page for Scribbls.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function viewCreate()
     {
         return view('app.create');
     }
@@ -50,5 +67,21 @@ class CreateController extends Controller
         DB::table('users')->where('id', '=', $request->user()->id)->update(['total_scribbls' => $c + 1]);
 
         return redirect()->route('app.dashboard');
+    }
+
+    /**
+     * Delete a Scribbl from the system.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function delete(Request $request)
+    {                
+        $s = Scribbl::find($request->id);
+        $s->delete();
+
+        $scribbls = Scribbl::where('owner', Auth::user()->id)->get();
+        $user = Auth::user();
+
+        return redirect()->route('app.dashboard', ['scribbls' => $scribbls, 'user' => $user]);
     }
 }
