@@ -1,0 +1,54 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create release branch
+        env:
+          REF: ${{ github.ref }}
+        run: |
+          BRANCH=release/${REF:10}
+          git config --local user.email "github@scribbl.ink"
+          git config --local user.name "Scribbl Actions"
+          git checkout -b $BRANCH
+          git push -u origin $BRANCH
+          sed -i "s/    'version' => 'canary',/    'version' => '${REF:11}',/" config/app.php
+          git add config/app.php
+          git commit -m "Create release ${REF:11}"
+          git push
+
+      - name: Create release files
+        run: |
+          rm -rf tests/ phpunit.xml webpack.mix.js
+          tar -czf scribbl.tar.gz * .env.example
+          
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ steps.extract_changelog.outputs.version_name }}
+          draft: true
+          prerelease: ${{ contains(github.ref, 'beta') || contains(github.ref, 'alpha') }}
+          
+      - name: Upload binary
+        id: upload-release-archive
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: scribbl.tar.gz
+          asset_name: scribbl.tar.gz
+          asset_content_type: application/gzip
