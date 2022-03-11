@@ -40,6 +40,11 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/error', [ScribblController::class, 'view'])->name('app.unauthorised');
     });
 
+    Route::prefix('edit')->group(function () {
+        Route::get('/{id}', [ScribblController::class, 'viewEdit'])->name('app.edit');
+        Route::post('/{id}', [ScribblController::class, 'edit'])->name('app.edit.new');
+    });
+
     Route::prefix('delete')->group(function () {
         Route::post('/{id}', [ScribblController::class, 'delete'])->name('app.delete');
     });

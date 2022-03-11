@@ -70,6 +70,31 @@ class ScribblController extends Controller
     }
 
     /**
+     * Show the creation page for Scribbls.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function viewEdit(Request $request)
+    {
+        $scribbl = Scribbl::find($request->id);
+        return view('app.edit', ['scribbl' => $scribbl]);
+    }
+
+    /**
+     * Edit a Scribbl.
+     *
+     */
+    public function edit(Request $request)
+    {
+        $s = Scribbl::find($request->id);
+        $s->title = $request->title;
+        $s->description = $request->description;
+        $s->save();
+
+        return redirect()->route('app.dashboard');
+    }
+
+    /**
      * Delete a Scribbl from the system.
      *
      * @return \Illuminate\Contracts\Support\Renderable
