@@ -36,10 +36,12 @@ class CreateController extends Controller
      */
     public function create(Request $request)
     {
-        $s = new Scribbl;
-        $s->owner = Auth::user()->id;
-        $s->title = $request->title;
-        $s->description = $request->description;
+        $s = Scribbl::create([
+            'owner' => Auth::user()->id,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
         $s->save();
 
         $craw = DB::table('users')->select('total_scribbls')->where('id', '=', $request->user()->id)->get();

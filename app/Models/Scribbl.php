@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Scribbl extends Model
 {
     use HasFactory;
+
+
+    /**
+     * A list of mass-assignable attributes.
+     *
+     */
+    protected $fillable = [
+        'owner',
+        'title',
+        'description',
+    ];
 }
