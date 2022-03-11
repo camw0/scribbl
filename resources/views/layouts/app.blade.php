@@ -17,7 +17,7 @@
         <nav class="w-100pc flex flex-column md-flex-row md-px-10 py-5 bg-black">
             <div class="flex justify-between">
                 <a href="/" class="flex items-center p-2 mr-4 no-underline">
-                    Scribbl
+                    {{ config('app.name') }}
                 </a>
             </div>
             <div id="nav-items"
