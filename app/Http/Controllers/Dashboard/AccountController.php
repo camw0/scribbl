@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -24,6 +25,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('app/account');
+        $user = Auth::user();
+        return view('app.account', ['user' => $user]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Scribbl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ViewController extends Controller
 {
@@ -26,6 +27,12 @@ class ViewController extends Controller
     public function index(Request $request)
     {
         $scribbl = Scribbl::find($request->id);
-        return view('app.view', ['scribbl' => $scribbl]);
+        $user = Auth::user();
+
+        if (Auth::user()->id !== $scribbl->owner) {
+            return view('app.unauthorised');
+        } else {
+            return view('app.view', ['scribbl' => $scribbl, 'user' => $user]);
+        };
     }
 }

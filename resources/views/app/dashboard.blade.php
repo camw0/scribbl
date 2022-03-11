@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="p-10 md-p-l5">
-        @if(session('success'))
+        @if(session('error'))
             <p class="fw-600 white">
-                {!! session('success') !!}
+                {!! session('error') !!}
             </p>
         @endif
         <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
@@ -20,7 +20,7 @@
                                     <p class="fw-600 white fs-m3 mt-3">
                                         {{ $s->title }}
                                     </p>
-                                    <div class="indigo fs-s3 italic after-arrow-right my-4">{{ $s->created_at->diffForHumans() }} by {{ Auth::user()->name }} </div>
+                                    <div class="indigo fs-s3 italic after-arrow-right my-4">{{ $s->created_at->diffForHumans() }} by {{ $user->name }} </div>
                                 </a>
                             </div>
                         @endforeach

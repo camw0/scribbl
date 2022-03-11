@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Scribbl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -26,7 +27,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $scribbls = Scribbl::all();
-        return view('app.dashboard', ['scribbls' => $scribbls]);
+        $scribbls = Scribbl::where('owner', Auth::user()->id)->get();
+        $user = Auth::user();
+        return view('app.dashboard', ['scribbls' => $scribbls, 'user' => $user]);
     }
 }

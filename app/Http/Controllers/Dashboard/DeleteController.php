@@ -25,10 +25,15 @@ class DeleteController extends Controller
      */
     public function index(Request $request)
     {
-        $scribbl = Scribbl::find($request->id);
-        $scribbl->delete();
+        $scribbls = Scribbl::where('owner', Auth::user()->id)->get();
     
-        $scribbls = Scribbl::all();
-        return view('app.dashboard', ['scribbls' => $scribbls]);
+        if (Auth::user()->id !== $scribbl->owner) {
+            return view('app.unauthorised');
+        } else {
+            $s = Scribbl::find($request->id);
+            $s->delete();
+            return view('app.dashboard', ['scribbls' => $scribbls]);
+        };
+
     }
 }

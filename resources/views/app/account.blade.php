@@ -12,7 +12,7 @@
                         <div class="w-100pc md-w-33pc p-3">
                             <div class="block p-5 bg-indigo-lightest-10">
                                 <p class="fw-600 white fs-l2 mt-3">
-                                    {{ Auth::user()->name }}
+                                    {{ $user->name }}
                                 </p>
                                 <div class="indigo fs-m2 my-4">Username</div>
                             </div>
@@ -20,7 +20,7 @@
                         <div class="w-100pc md-w-33pc p-3">
                             <div class="block p-5 bg-indigo-lightest-10">
                                 <p class="fw-600 white fs-l2 mt-3">
-                                    {{ Auth::user()->total_scribbls }}
+                                    {{ $user->total_scribbls }}
                                 </p>
                                 <div class="indigo fs-m2 my-4">Total Scribbls</div>
                             </div>
@@ -28,7 +28,7 @@
                         <div class="w-100pc md-w-33pc p-3">
                             <div class="block p-5 bg-indigo-lightest-10">
                                 <p class="fw-600 white fs-l2 mt-3">
-                                    {{ Auth::user()->created_at->diffForHumans() }}
+                                    {{ $user->created_at->diffForHumans() }}
                                 </p>
                                 <div class="indigo fs-m2 my-4">Time Created</div>
                             </div>

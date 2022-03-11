@@ -25,5 +25,6 @@ Route::get('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController
 Route::post('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController::class, 'create'])->name('app.create.post');
 
 Route::get('/dashboard/view/{id}', [App\Http\Controllers\Dashboard\ViewController::class, 'index'])->name('app.view');
+Route::get('/dashboard/view/error', [App\Http\Controllers\Dashboard\ViewController::class, 'index'])->name('app.unauthorised');
 
 Route::post('/dashboard/delete/{id}', [App\Http\Controllers\Dashboard\DeleteController::class, 'index'])->name('app.delete');
