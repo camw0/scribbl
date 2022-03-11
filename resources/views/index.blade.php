@@ -20,15 +20,30 @@
                         place to store your notes. </h2>
                 </div>
                 <div class="br-8 mt-5 inline-flex">
-                    <h6 class="white fs-l3">
-                        <a href="/login" class="white no-underline">
-                            <span class="border-b bc-indigo bw-4">Login</span>
+                    @guest
+                        @if (Route::has('login'))
+                            <a href="/login" class="white fs-l3 no-underline border-b bc-indigo bw-4">Login</a>
+                        @endif
+                        @if (Route::has('register'))
+                            <a href="/register" class="white ml-8 fs-l3 no-underline border-b bc-indigo bw-4">Register</a>
+                        @endif
+                    @else
+                        <a href="/dashboard" class="white fs-l3 no-underline border-b bc-indigo bw-4">Dashboard</a>
+                        <a
+                            href="{{ route('logout') }}"
+                            class="white ml-8 fs-l3 no-underline border-b bc-indigo bw-4"
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                        >
+                            Logout
                         </a>
-                    </h6>
+                    @endguest
                 </div>
             </div>
         </div>
     </section>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
 </body>
 
 </html>

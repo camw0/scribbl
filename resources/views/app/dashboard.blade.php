@@ -12,11 +12,6 @@
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
             <div class="w-100pc md-w-100pc">
-                <p class="fw-600 indigo-lightest opacity-30">
-                    Hey! If you&apos;re seeing this, you&apos;re seeing the first ever version of Scribbl.
-                    <br />
-                    Thanks for being a super super early adopter (or curious person from the future!).
-                </p>
                 <section class="p-0 md-p-5">
                     <div class="flex flex-wrap">
                         @foreach($scribbls as $s)

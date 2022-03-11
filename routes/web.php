@@ -25,3 +25,5 @@ Route::get('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController
 Route::post('/dashboard/create', [App\Http\Controllers\Dashboard\CreateController::class, 'create'])->name('app.create.post');
 
 Route::get('/dashboard/view/{id}', [App\Http\Controllers\Dashboard\ViewController::class, 'index'])->name('app.view');
+
+Route::post('/dashboard/delete/{id}', [App\Http\Controllers\Dashboard\DeleteController::class, 'index'])->name('app.delete');
