@@ -2,7 +2,10 @@
 
 @section('content')
     <section class="p-10 md-p-l5">
-        <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">Your <span class="border-b bc-indigo bw-4">Account</span></h2>
+        <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
+            <i data-feather="user" width="64" height="64"></i>
+            Your <span class="border-b bc-indigo bw-4">Account</span>
+        </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
             <div class="w-100pc md-w-100pc">
                 <section class="p-0 md-p-5">
@@ -12,7 +15,7 @@
                                 <p class="fw-600 white fs-l2 mt-3">
                                     {{ $user->name }}
                                 </p>
-                                <div class="indigo fs-m2 my-4">{{ $user->email }}</div>
+                                <div class="indigo fs-m2 my-4"><i data-feather="user" width="12" height="12"></i> {{ $user->email }}</div>
                             </div>
                         </div>
                         <div class="w-100pc md-w-33pc p-3">
@@ -20,7 +23,7 @@
                                 <p class="fw-600 white fs-l2 mt-3">
                                     {{ $user->total_scribbls }}
                                 </p>
-                                <div class="indigo fs-m2 my-4">Total Scribbls</div>
+                                <div class="indigo fs-m2 my-4"><i data-feather="edit-2" width="12" height="12"></i> Total Scribbls</div>
                             </div>
                         </div>
                         <div class="w-100pc md-w-33pc p-3">
@@ -28,7 +31,7 @@
                                 <p class="fw-600 white fs-l2 mt-3">
                                     {{ $user->created_at->diffForHumans() }}
                                 </p>
-                                <div class="indigo fs-m2 my-4">Time Created</div>
+                                <div class="indigo fs-m2 my-4"><i data-feather="clock" width="12" height="12"></i> Time Created</div>
                             </div>
                         </div>
                         <div class="w-100pc md-w-50pc p-3">

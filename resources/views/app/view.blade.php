@@ -3,6 +3,7 @@
 @section('content')
     <section class="p-10 md-p-l5">
         <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
+            <i data-feather="file-text" width="64" height="64"></i>
             <span class="border-b bc-indigo bw-4">{{ $scribbl->title }}</span>
             <a href="#" class="no-underline">
                 <span class="fs-s1 mx-3 py-3 red"
