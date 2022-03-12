@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Support\Renderable;
 
 class AccountController extends Controller
 {
@@ -19,31 +20,28 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the application dashboard account page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Show the account page.
      */
-    public function index()
+    public function index(): Renderable
     {
         $user = Auth::user();
+
         return view('app.account', ['user' => $user]);
     }
 
     /**
      * Update the authenticated users' email.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function updateEmail(Request $request)
+    public function updateEmail(Request $request): Renderable
     {
         $request->validate([
             'email' => 'required|email|string|max:255',
         ]);
 
-        $u = Auth::user();
-        $u->email = $request['email'];
-        $u->save();
+        $user = Auth::user();
+        $user->email = $request->email;
+        $user->save();
 
-        return redirect()->route('app.account', ['user' => $u]);
+        return redirect()->route('app.account', ['user' => $user]);
     }
 }
