@@ -34,7 +34,7 @@
                                 <div class="indigo fs-m2 my-4"><i data-feather="clock" width="12" height="12"></i> Time Created</div>
                             </div>
                         </div>
-                        <div class="w-100pc md-w-50pc p-3">
+                        <div class="w-100pc md-w-100pc p-3">
                             <form method="POST" action="{{ route('app.account.email') }}"
                                 class="block p-5 bg-indigo-lightest-10">
                                 @csrf
@@ -49,12 +49,6 @@
                                     Update
                                 </button>
                             </form>
-                        </div>
-                        <div class="w-100pc md-w-50pc p-3">
-                            <div class="block p-5 bg-indigo-lightest-10">
-                                <p class="fw-600 white fs-l2 mt-3">Update <span
-                                        class="border-b bc-indigo bw-4">Password</span> (WIP)</p>
-                            </div>
                         </div>
                     </div>
                 </section>
