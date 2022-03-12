@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ config('app.name', 'Scribbl') }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
     <link rel="stylesheet"
@@ -22,11 +22,9 @@
             </div>
             <div id="nav-items"
                 class="hidden flex sm-w-100pc flex-column md-flex md-flex-row md-justify-end items-center">
-                @guest
-                    @if (Route::has('login'))
-                        <a href="/login" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Login</a>
-                    @endif
-                    @if (Route::has('register'))
+                @guest @if (Route::has('login'))
+                    <a href="/login" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Login</a>
+                    @endif @if (Route::has('register'))
                         <a href="/register" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Register</a>
                     @endif
                 @else
@@ -38,19 +36,19 @@
                     </a>
                     <a href="/dashboard/create" class="button bg-white black fw-600 no-underline mx-5">Create</a>
                 @endguest
-            </div>
-        </nav>
+        </div>
+    </nav>
 
-        <main>
-            @yield('content')
-        </main>
-    </div>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form>
-    <script>
-        feather.replace()
-    </script>
+    <main>
+        @yield('content')
+    </main>
+</div>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
+<script>
+    feather.replace();
+</script>
 </body>
 
 </html>
