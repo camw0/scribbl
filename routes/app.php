@@ -32,7 +32,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::prefix('create')->group(function () {
         Route::get('/', [ScribblController::class, 'viewCreate'])->name('app.create');
-        Route::post('/', [ScribblController::class, 'create'])->name('app.create.new');
+        Route::post('/', [ScribblController::class, 'create'])->name('app.create');
     });
 
     Route::prefix('view')->group(function () {

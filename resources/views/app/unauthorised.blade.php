@@ -7,7 +7,7 @@
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
             <h2 class="white">
-                You are not authorised to access this Scribbl.
+                <i data-feather="x-circle" width="16" height="16" color="red"></i> You are not authorised to access this Scribbl.
             </h2>
         </div>
     </section>

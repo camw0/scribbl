@@ -32,7 +32,7 @@ class AccountController extends Controller
     /**
      * Update the authenticated users' email.
      */
-    public function updateEmail(Request $request): Renderable
+    public function updateEmail(Request $request)
     {
         $request->validate([
             'email' => 'required|email|string|max:255',

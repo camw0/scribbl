@@ -10,7 +10,7 @@
                     Delete
                 </span>
             </a>
-            <a href="/dashboard/edit/{{ $scribbl->id }}" class="no-underline">
+            <a href="{{ route('app.edit', $scribbl->id) }}" class="no-underline">
                 <span class="fs-s1 mx-3 py-3 yellow">
                     Edit
                 </span>
@@ -24,7 +24,7 @@
         <p class="fs-s1 mx-3 py-3 indigo no-underline">Last updated {{ $scribbl->updated_at->diffForHumans() }} by
             {{ $user->name }}</p>
     </section>
-    <form id="delete-form" action="/dashboard/delete/{{ $scribbl->id }}" method="POST" class="d-none">
+    <form id="delete-form" action="{{ route('app.delete', $scribbl->id) }}" method="POST" class="d-none">
         @csrf
     </form>
 @endsection

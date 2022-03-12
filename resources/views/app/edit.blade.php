@@ -6,7 +6,7 @@
             Edit <span class="border-b bc-indigo bw-4">{{ $scribbl->title }}</span>
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
-            <form method="POST" action="/dashboard/edit/{{ $scribbl->id }}" class="w-100pc md-w-100pc">
+            <form method="POST" action="{{ route('app.edit', $scribbl->id) }}" class="w-100pc md-w-100pc">
                 @csrf
                 <br />
                 <input id="title" name="title" type="text" required
