@@ -40,6 +40,10 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/error', [ScribblController::class, 'view'])->name('app.unauthorised');
     });
 
+    Route::prefix('info')->group(function () {
+        Route::get('/{id}', [ScribblController::class, 'viewInfo'])->name('app.info');
+    });
+
     Route::prefix('edit')->group(function () {
         Route::get('/{id}', [ScribblController::class, 'viewEdit'])->name('app.edit');
         Route::post('/{id}', [ScribblController::class, 'edit'])->name('app.edit.new');

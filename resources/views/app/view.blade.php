@@ -16,6 +16,11 @@
                     Edit
                 </span>
             </a>
+            <a href="{{ route('app.info', $scribbl->id) }}" class="no-underline">
+                <span class="fs-s1 mx-3 py-3 green">
+                    Info
+                </span>
+            </a>
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
             <h2 class="white">

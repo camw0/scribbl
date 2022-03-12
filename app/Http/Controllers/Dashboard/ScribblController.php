@@ -37,6 +37,21 @@ class ScribblController extends Controller
     }
 
     /**
+     * Show the info page for Scribbls.
+     */
+    public function viewInfo(Request $request): Renderable
+    {
+        $scribbl = Scribbl::find($request['id']);
+        $user = Auth::user();
+
+        if (Auth::user()->id != $scribbl->owner) {
+            return view('app.unauthorised');
+        } else {
+            return view('app.info', ['scribbl' => $scribbl, 'user' => $user]);
+        };
+    }
+
+    /**
      * Show the create page for Scribbls.
      */
     public function viewCreate(): Renderable
