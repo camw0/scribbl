@@ -29,7 +29,7 @@ class ScribblController extends Controller
         $scribbl = Scribbl::find($request['id']);
         $user = Auth::user();
 
-        if (Auth::user()->id !== $scribbl->owner) {
+        if (Auth::user()->id != $scribbl->owner) {
             return view('app.unauthorised');
         } else {
             return view('app.view', ['scribbl' => $scribbl, 'user' => $user]);
