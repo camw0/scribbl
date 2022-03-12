@@ -29,13 +29,16 @@
                         <span class="border-b bc-indigo bw-4">Scribbl</span> Information
                     </p>
                     <h2 class="white mt-8 mb-4">
-                        Created  <span class="indigo">{{ $scribbl->created_at->diffForHumans() }}</span>
+                        <i data-feather="file-text" width="16" height="16"></i>
+                        Scribbl ID <span class="indigo">{{ $scribbl->id }}</span>
                     </h2>
                     <h2 class="white mt-4 mb-4">
-                        Updated <span class="indigo">{{ $scribbl->updated_at->diffForHumans() }}</span>
+                        <i data-feather="clock" width="16" height="16"></i>
+                        Created  <span class="indigo">{{ $scribbl->created_at->diffForHumans() }}</span>
                     </h2>
                     <h2 class="white mt-4 mb-8">
-                        Other stats here
+                        <i data-feather="clock" width="16" height="16"></i>
+                        Updated <span class="indigo">{{ $scribbl->updated_at->diffForHumans() }}</span>
                     </h2>
                 </div>
             </div>
@@ -45,13 +48,16 @@
                         <span class="border-b bc-indigo bw-4">User</span> Information
                     </p>
                     <h2 class="white mt-8 mb-4">
-                        Created by <span class="indigo">{{ $user->name }}</span>
+                        <i data-feather="edit-3" width="16" height="16"></i>
+                        Made by <span class="indigo">{{ $user->name }}</span>
                     </h2>
                     <h2 class="white mt-4 mb-4">
+                        <i data-feather="at-sign" width="16" height="16"></i>
                         Email <span class="indigo">{{ $user->email }}</span>
                     </h2>
                     <h2 class="white mt-4 mb-8">
-                        Created <span class="indigo">{{ $user->created_at->diffForHumans() }}</span>
+                        <i data-feather="clock" width="16" height="16"></i>
+                        User since <span class="indigo">{{ $user->created_at }}</span>
                     </h2>
                 </div>
             </div>
