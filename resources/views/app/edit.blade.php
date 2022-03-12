@@ -11,13 +11,12 @@
                 <br />
                 <input id="title" name="title" type="text" required
                     class="input-lg w-100pc bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-m4 py-5"
-                    placeholder="{{ $scribbl->title }}">
+                    value="{{ $scribbl->title }}">
                 <hr class="bc-indigo" />
                 <br />
                 <textarea rows="5" id="description" name="description"
                     class="input-lg min-h-50vh w-100pc bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-m6"
-                    placeholder="{{ $scribbl->description }}">
-                    </textarea>
+                    >{{ $scribbl->description }}</textarea>
                 <hr class="bc-indigo" />
                 <br />
                 <button type="submit" class="button-lg w-100pc bg-indigo indigo-lightest bw-0 fw-300 fs-s3">
