@@ -34,7 +34,7 @@
                                 <div class="indigo fs-m2 my-4"><i data-feather="clock" width="12" height="12"></i> Time Created</div>
                             </div>
                         </div>
-                        <div class="w-100pc md-w-100pc p-3">
+                        <div class="w-100pc md-w-50pc p-3">
                             <form method="POST" action="{{ route('app.account.email') }}"
                                 class="block p-5 bg-indigo-lightest-10">
                                 @csrf
@@ -47,6 +47,23 @@
                                 </div>
                                 <button type="submit" class="button-lg w-100pc bg-indigo indigo-lightest bw-0 fw-300 fs-s3">
                                     Update
+                                </button>
+                            </form>
+                        </div>
+                        <div class="w-100pc md-w-50pc p-3">
+                            <form method="POST" action="{{ route('app.account.delete') }}"
+                                class="block p-5 bg-indigo-lightest-10">
+                                @csrf
+                                <p class="fw-600 white fs-l2 mt-3">
+                                    Delete <span class="border-b bc-red bw-4">Account</span>
+                                </p>
+                                <p class="fw-600 white fs-s1 mt-3 mb-3">
+                                    Deleting your Scribbl account will result in PERMENANT data loss.
+                                    All scribbls associated with your account will be deleted.
+                                    Are you sure you wish to continue?
+                                </p>
+                                <button type="submit" class="button-lg w-100pc bg-red red-lightest bw-0 fw-300 fs-s3">
+                                    Delete Account
                                 </button>
                             </form>
                         </div>

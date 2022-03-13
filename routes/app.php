@@ -28,6 +28,7 @@ Route::prefix('dashboard')->group(function () {
     Route::prefix('account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('app.account');
         Route::post('/email', [AccountController::class, 'updateEmail'])->name('app.account.email');
+        Route::post('/delete', [AccountController::class, 'delete'])->name('app.account.delete');
     });
 
     Route::prefix('create')->group(function () {

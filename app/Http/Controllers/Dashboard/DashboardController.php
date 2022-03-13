@@ -26,9 +26,13 @@ class DashboardController extends Controller
      */
     public function index(): Renderable
     {
-        $scribbls = Scribbl::where('owner', Auth::user()->id)->get();
+        // Get the authenticated user.
         $user = Auth::user();
+    
+        // Get all Scribbls owned by the authenticated user.
+        $scribbls = Scribbl::where('owner', $user->id)->get();
 
+        // Return dashboard page with authenticated user and Scribbls they own.
         return view('app.dashboard', ['scribbls' => $scribbls, 'user' => $user]);
     }
 }

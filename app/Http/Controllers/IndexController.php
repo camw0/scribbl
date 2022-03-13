@@ -12,6 +12,7 @@ class IndexController extends Controller
      */
     public function index(): Renderable
     {
+        // Show the index page.
         return view('index');
     }
 }
