@@ -24,26 +24,26 @@
             </div>
             <form method="POST" action="{{ route('login') }}" class="w-100pc md-w-50pc">
                 @csrf
+                @error('email')
+                    <span class="@error('email') is-invalid @enderror white" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                @error('password')
+                    <span class="@error('password') is-invalid @enderror white" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <div class="flex my-5">
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email"
                         autofocus
-                        class="form-control @error('email') is-invalid @enderror input-lg flex-grow-1 bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-s3 py-5"
+                        class="form-control input-lg flex-grow-1 bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-s3 py-5"
                         placeholder="Email Address or Username">
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                 </div>
                 <div class="flex my-5">
                     <input id="password" name="password" required autocomplete="password" type="password"
-                        class="form-control @error('password') is-invalid @enderror input-lg flex-grow-1 bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-s3 py-5"
+                        class="form-control input-lg flex-grow-1 bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-s3 py-5"
                         placeholder="Password">
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                 </div>
                 <div class="flex my-5">
                     <button type="submit" class="button-lg bg-indigo indigo-lightest flex-grow-1 bw-0 fw-300 fs-s3">Log
