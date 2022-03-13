@@ -1,5 +1,3 @@
-# 🚧 **This software is not ready for use in production.** 🚧
-
 ![Main Language](https://img.shields.io/github/languages/top/cmrxnn/scribbl?style=for-the-badge)
 ![Code Size](https://img.shields.io/github/languages/code-size/cmrxnn/scribbl?style=for-the-badge)
 ![Open Issues](https://img.shields.io/github/issues/cmrxnn/scribbl?style=for-the-badge)
