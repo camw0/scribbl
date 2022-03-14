@@ -37,6 +37,7 @@
                 </h3>
                 <br />
                 <textarea
+                    required
                     rows="5"
                     id="description"
                     name="description"

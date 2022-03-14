@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\Validation\Validator as Validation;
 
 class ScribblController extends Controller
 {
@@ -36,6 +38,12 @@ class ScribblController extends Controller
             // If it's public,
             // set to 'true'
             $p = 1;
+        }
+
+        if (!$request['title']) {
+            return redirect()->route('app.dashboard.private')->with('error', 'A title was not assigned to the Scribbl.');
+        } else if (!$request['description']) {
+            return redirect()->route('app.dashboard.private')->with('error', 'A description was not assigned to the Scribbl.');
         }
 
         // Create a Scribbl using the model

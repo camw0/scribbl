@@ -3,7 +3,8 @@
 @section('content')
     <section class="p-10 md-p-l5">
         @if (session('error'))
-            <p class="fw-600 white">
+            <p class="fw-600 red fs-m2 mt-10">
+                <i data-feather="x-circle" width="16" height="16" color="red"></i>
                 {!! session('error') !!}
             </p>
         @endif
@@ -37,7 +38,7 @@
                             <div class="w-100pc md-w-33pc p-3">
                                 <a href="{{ route('app.view', $s->id) }}"
                                     class="block no-underline p-5 br-8 bg-indigo-lightest-10 hover-scale-up-1 ease-300">
-                                    <p class="fw-600 white fs-m3 mt-3">
+                                    <p class="fw-600 white fs-m3 mt-3 truncate overflow-x-hidden">
                                         {{ $s->title }}
                                     </p>
                                     <div class="indigo fs-s3 italic after-arrow-right my-4">
