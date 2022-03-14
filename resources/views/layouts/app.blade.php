@@ -10,12 +10,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        body {opacity: 0;transition: opacity 0.5s;}
-    </style>
 </head>
 
-<body class="bg-black muli" onload="document.body.style.opacity='1'">
+<body class="bg-black muli">
     <div id="app">
         <nav class="w-100pc flex flex-column md-flex-row md-px-10 py-5 bg-black">
             <div class="flex justify-between">

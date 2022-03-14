@@ -8,12 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
-    <style>
-        body {opacity: 0;transition: opacity 0.5s;}
-    </style>
 </head>
 
-<body class="bg-black muli" onload="document.body.style.opacity='1'">
+<body class="bg-black muli">
     <section id="home" class="min-h-100vh flex justify-start items-center">
         <div class="mx-5 md-mx-l5">
             <div>
