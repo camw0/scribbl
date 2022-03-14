@@ -85,6 +85,7 @@ class ScribblController extends Controller
             'owner' => Auth::user()->id,
             'title' => $request['title'],
             'description' => $request['description'],
+            'public' => $request['public'],
         ]);
         $s->save();
 

@@ -18,5 +18,6 @@ class Scribbl extends Model
         'owner',
         'title',
         'description',
+        'public',
     ];
 }

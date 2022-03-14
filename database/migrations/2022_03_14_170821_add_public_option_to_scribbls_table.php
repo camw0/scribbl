@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('scribbls', function (Blueprint $table) {
-            $table->boolean('public')->default(false);
+            $table->boolean('public')->nullable()->default(false);
         });
     }
 
