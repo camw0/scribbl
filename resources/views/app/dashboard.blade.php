@@ -21,6 +21,9 @@
             @endif
             <div class="w-100pc md-w-100pc">
                 <section class="p-0 md-p-5">
+                    <h4 class="justify-center text-center white fs-l2 md-fs-x8 fw-900 lh-2 mb-10">
+                        Private Scribbls
+                    </h4>
                     <div class="flex flex-wrap">
                         @foreach ($scribbls as $s)
                             <div class="w-100pc md-w-33pc p-3">
@@ -43,6 +46,26 @@
                             </div>
                         @endforeach
                     </div>
+                    <hr class="mt-10"/>
+                    <h4 class="justify-center text-center white fs-l2 md-fs-x8 fw-900 lh-2 mt-10">
+                        Public Scribbls
+                    </h4>
+                        @foreach ($public as $ps)
+                            <div class="w-100pc md-w-33pc p-3">
+                                <a href="{{ route('app.view', $ps->id) }}"
+                                    class="block no-underline p-5 br-8 bg-indigo-lightest-10 hover-scale-up-1 ease-300">
+                                    <p class="fw-600 white fs-m3 mt-3">
+                                        {{ $ps->title }}
+                                    </p>
+                                    <div class="indigo fs-s3 italic after-arrow-right my-4">
+                                        {{ $ps->created_at->diffForHumans() }}
+                                        by
+                                        {{ \App\Models\User::find($ps->owner)->name }}
+                                        Public Scribbl
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
                 </section>
             </div>
         </div>

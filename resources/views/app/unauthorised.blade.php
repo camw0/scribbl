@@ -8,7 +8,7 @@
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
             <h2 class="white">
-                You are not authorised to access this Scribbl.
+                You are not authorised to perform this action.
             </h2>
         </div>
     </section>

@@ -81,6 +81,17 @@ class ScribblController extends Controller
     {
         // Get the Scribbl requested.
         $scribbl = Scribbl::find($request['id']);
+
+        // Get the owner of the Scribbl.
+        $user = $scribbl->owner;
+
+        // MAKE SURE THAT THE SCRIBBL IS BEING
+        // DELETED BY THE OWNER, not someone else lmao
+        if ($scribbl->owner != Auth::user()->id) {
+            // Return the unauthorised page
+            return view('app.unauthorised');
+        }
+
         // Find the Scribbl and delete it from
         // the system using the model.
         $scribbl->delete();
