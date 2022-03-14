@@ -30,7 +30,13 @@
                     </p>
                     <h2 class="white mt-8 mb-4">
                         <i data-feather="file-text" width="16" height="16"></i>
-                        Scribbl ID <span class="indigo">{{ $scribbl->id }}</span>
+                        Visibility <span class="indigo">
+                            @if (!$scribbl->public)
+                                Private
+                            @else
+                                Public
+                            @endif
+                        </span>
                     </h2>
                     <h2 class="white mt-4 mb-4">
                         <i data-feather="clock" width="16" height="16"></i>

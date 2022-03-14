@@ -30,7 +30,15 @@
                                         {{ $s->title }}
                                     </p>
                                     <div class="indigo fs-s3 italic after-arrow-right my-4">
-                                        {{ $s->created_at->diffForHumans() }} by {{ \App\Models\User::find($s->owner)->name }} </div>
+                                        {{ $s->created_at->diffForHumans() }}
+                                        by
+                                        {{ \App\Models\User::find($s->owner)->name }}
+                                        @if (!$s->public)
+                                            (Private)
+                                        @else
+                                            (Public)
+                                        @endif
+                                    </div>
                                 </a>
                             </div>
                         @endforeach
