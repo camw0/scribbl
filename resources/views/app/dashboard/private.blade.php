@@ -20,19 +20,19 @@
             </span>
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
-            @if (count($scribbls) < 1)
-                <p class="fw-600 white fs-m3 mt-3">
-                    You don&apos;t seem to have any Scribbls.
-                    Create one <a href="{{ route('app.create') }}">here!</a>
-                </p>
-                <br/>
-            @endif
             <div class="w-100pc md-w-100pc">
                 <section class="p-0 md-p-5">
                     <h4 class="justify-center text-center white fs-l2 md-fs-x8 fw-900 lh-2 mb-10">
                         Private Scribbls
                     </h4>
                     <div class="flex flex-wrap">
+                        @if (count($scribbls) < 1)
+                            <p class="fw-600 white fs-m3 mt-3">
+                                You don&apos;t seem to have any Scribbls.
+                                Create one <a href="{{ route('app.create') }}">here!</a>
+                            </p>
+                            <br/>
+                        @endif
                         @foreach ($scribbls as $s)
                             <div class="w-100pc md-w-33pc p-3">
                                 <a href="{{ route('app.view', $s->id) }}"
