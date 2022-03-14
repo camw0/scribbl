@@ -30,7 +30,7 @@
                                         {{ $s->title }}
                                     </p>
                                     <div class="indigo fs-s3 italic after-arrow-right my-4">
-                                        {{ $s->created_at->diffForHumans() }} by {{ $user->name }} </div>
+                                        {{ $s->created_at->diffForHumans() }} by {{ \App\Models\User::find($s->owner)->name }} </div>
                                 </a>
                             </div>
                         @endforeach

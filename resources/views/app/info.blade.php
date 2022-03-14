@@ -49,15 +49,15 @@
                     </p>
                     <h2 class="white mt-8 mb-4">
                         <i data-feather="edit-3" width="16" height="16"></i>
-                        Made by <span class="indigo">{{ $user->name }}</span>
+                        Made by <span class="indigo">{{ \App\Models\User::find($scribbl->owner)->name }}</span>
                     </h2>
                     <h2 class="white mt-4 mb-4">
                         <i data-feather="at-sign" width="16" height="16"></i>
-                        Email <span class="indigo">{{ $user->email }}</span>
+                        Email <span class="indigo">{{ \App\Models\User::find($scribbl->owner)->email }}</span>
                     </h2>
                     <h2 class="white mt-4 mb-8">
                         <i data-feather="clock" width="16" height="16"></i>
-                        User since <span class="indigo">{{ $user->created_at }}</span>
+                        User since <span class="indigo">{{ \App\Models\User::find($scribbl->owner)->created_at }}</span>
                     </h2>
                 </div>
             </div>

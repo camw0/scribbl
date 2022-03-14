@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Dashboard\AccountController;
-use App\Http\Controllers\Dashboard\ScribblController;
 use App\Http\Controllers\Dashboard\DashboardController;
+
+use App\Http\Controllers\Dashboard\Scribbl\ViewController;
+use App\Http\Controllers\Dashboard\Scribbl\ScribblController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,21 +34,21 @@ Route::prefix('dashboard')->group(function () {
     });
 
     Route::prefix('create')->group(function () {
-        Route::get('/', [ScribblController::class, 'viewCreate'])->name('app.create');
+        Route::get('/', [ViewController::class, 'create'])->name('app.create');
         Route::post('/', [ScribblController::class, 'create'])->name('app.create');
     });
 
     Route::prefix('view')->group(function () {
-        Route::get('/{id}', [ScribblController::class, 'view'])->name('app.view');
-        Route::get('/error', [ScribblController::class, 'view'])->name('app.unauthorised');
+        Route::get('/{id}', [ViewController::class, 'view'])->name('app.view');
+        Route::get('/error', [ViewController::class, 'view'])->name('app.unauthorised');
     });
 
     Route::prefix('info')->group(function () {
-        Route::get('/{id}', [ScribblController::class, 'viewInfo'])->name('app.info');
+        Route::get('/{id}', [ViewController::class, 'info'])->name('app.info');
     });
 
     Route::prefix('edit')->group(function () {
-        Route::get('/{id}', [ScribblController::class, 'viewEdit'])->name('app.edit');
+        Route::get('/{id}', [ViewController::class, 'edit'])->name('app.edit');
         Route::post('/{id}', [ScribblController::class, 'edit'])->name('app.edit.new');
     });
 

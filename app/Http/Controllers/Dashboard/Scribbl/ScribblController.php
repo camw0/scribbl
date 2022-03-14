@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Scribbl;
 
 use App\Models\Scribbl;
 use Illuminate\Http\Request;
@@ -22,70 +22,29 @@ class ScribblController extends Controller
     }
 
     /**
-     * Show the view page for Scribbls.
-     */
-    public function view(Request $request): Renderable
-    {
-        // Get the requested Scribbl.
-        $scribbl = Scribbl::find($request['id']);
-        // Get the authenticated user.
-        $user = Auth::user();
-
-        // If the user is not the Scribbl owner,
-        // we need to redirect them to the
-        // unauthorised page.
-        if (Auth::user()->id != $scribbl->owner) {
-            // Return unauthorised page.
-            return view('app.unauthorised');
-        } else {
-            // Return view page with authenticated user and the requested Scribbl.
-            return view('app.view', ['scribbl' => $scribbl, 'user' => $user]);
-        };
-    }
-
-    /**
-     * Show the info page for Scribbls.
-     */
-    public function viewInfo(Request $request): Renderable
-    {
-        // Get the requested Scribbl.
-        $scribbl = Scribbl::find($request['id']);
-        // Get the authenticated user.
-        $user = Auth::user();
-
-        // If the user is not the Scribbl owner,
-        // we need to redirect them to the
-        // unauthorised page.
-        if (Auth::user()->id != $scribbl->owner) {
-            // Return unauthorised page.
-            return view('app.unauthorised');
-        } else {
-            // Return info page with authenticated user and the requested Scribbl.
-            return view('app.info', ['scribbl' => $scribbl, 'user' => $user]);
-        };
-    }
-
-    /**
-     * Show the create page for Scribbls.
-     */
-    public function viewCreate(): Renderable
-    {
-        // Return creation page.
-        return view('app.create');
-    }
-
-    /**
      * Create the Scribbl and update the user's total scribbls.
      */
     public function create(Request $request)
     {
+        // Parse the request and see whether
+        // the Scribbl is public or not.
+        if (!$request['public']) {
+            // If it's private,
+            // set to 'false'
+            $p = 0;
+        } else {
+            // If it's public,
+            // set to 'true'
+            $p = 1;
+        }
+
         // Create a Scribbl using the model
         // and save it to the database.
         $s = Scribbl::create([
             'owner' => Auth::user()->id,
             'title' => $request['title'],
             'description' => $request['description'],
-            'public' => $request['public'],
+            'public' => $p,
         ]);
         $s->save();
 
@@ -96,18 +55,6 @@ class ScribblController extends Controller
 
         // Redirect to dashboard after success.
         return redirect()->route('app.dashboard');
-    }
-
-    /**
-     * Show the edit page for Scribbls.
-     */
-    public function viewEdit(Request $request): Renderable
-    {
-        // Get the requested Scribbl.
-        $scribbl = Scribbl::find($request['id']);
-
-        // Return edit page with requested Scribbl.
-        return view('app.edit', ['scribbl' => $scribbl]);
     }
 
     /**
@@ -131,11 +78,12 @@ class ScribblController extends Controller
      * Delete a Scribbl from the system.
      */
     public function delete(Request $request)
-    {                
+    {
+        // Get the Scribbl requested.
+        $scribbl = Scribbl::find($request['id']);
         // Find the Scribbl and delete it from
         // the system using the model.
-        $s = Scribbl::find($request['id']);
-        $s->delete();
+        $scribbl->delete();
 
         // Get a list of the scribbls owned by the user.
         $scribbls = Scribbl::where('owner', Auth::user()->id)->get();
