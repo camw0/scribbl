@@ -25,7 +25,9 @@ Auth::routes();
 
 Route::prefix('dashboard')->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index'])->name('app.dashboard');
+    Route::get('/', [DashboardController::class, 'redirect'])->name('app.dashboard');
+    Route::get('/private', [DashboardController::class, 'private'])->name('app.dashboard.private');
+    Route::get('/public', [DashboardController::class, 'public'])->name('app.dashboard.public');
 
     Route::prefix('account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('app.account');
@@ -35,7 +37,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::prefix('create')->group(function () {
         Route::get('/', [ViewController::class, 'create'])->name('app.create');
-        Route::post('/', [ScribblController::class, 'create'])->name('app.create');
+        Route::post('/', [ScribblController::class, 'create'])->name('app.create.new');
     });
 
     Route::prefix('view')->group(function () {

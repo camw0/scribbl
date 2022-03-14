@@ -62,12 +62,25 @@ class ScribblController extends Controller
      */
     public function edit(Request $request)
     {
+        // Parse the request and see whether
+        // the Scribbl is public or not.
+        if (!$request['public']) {
+            // If it's private,
+            // set to 'false'
+            $p = 0;
+        } else {
+            // If it's public,
+            // set to 'true'
+            $p = 1;
+        }
+
         // Find the Scribbl from the request
         // and update its information with
         // the new data from the request.
         $scribbl = Scribbl::find($request['id']);
         $scribbl->title = $request['title'];
         $scribbl->description = $request['description'];
+        $scribbl->public = $p;
         $scribbl->save();
 
         // Redirect to dashboard after success.

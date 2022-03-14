@@ -20,21 +20,36 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard with private scribbls.
+     */
+    public function redirect()
+    {
+        // Redirect to the private dashboard.
+        return redirect()->route('app.dashboard.private');
+    }
     
     /**
-     * Show the application dashboard.
+     * Show the application dashboard with private scribbls.
      */
-    public function index(): Renderable
+    public function private(): Renderable
     {
-        // Get the authenticated user.
-        $user = Auth::user();
-    
         // Get all Scribbls owned by the authenticated user.
-        $scribbls = Scribbl::where('owner', $user->id)->get();
+        $private = Scribbl::where('owner', Auth::user()->id)->get();
 
+        // Return dashboard page with authenticated user and Scribbls they own.
+        return view('app.dashboard.private', ['scribbls' => $private]);
+    }
+
+    /**
+     * Show the application dashboard with public scribbls.
+     */
+    public function public(): Renderable
+    {
+        // Get all public scribbls.
         $public = Scribbl::where('public', true)->get();
 
         // Return dashboard page with authenticated user and Scribbls they own.
-        return view('app.dashboard', ['scribbls' => $scribbls, 'user' => $user, 'public' => $public]);
+        return view('app.dashboard.public', ['scribbls' => $public]);
     }
 }

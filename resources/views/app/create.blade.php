@@ -7,7 +7,7 @@
             Create a <span class="border-b bc-indigo bw-4">Scribbl</span>
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
-            <form method="POST" action="{{ route('app.create') }}" class="w-100pc md-w-100pc">
+            <form method="POST" action="{{ route('app.create.new') }}" class="w-100pc md-w-100pc">
                 @csrf
                 <h3 class="fw-600 white">
                     Give your Scribbl a title...
