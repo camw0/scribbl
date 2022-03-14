@@ -12,7 +12,7 @@ return [
     | change this value if you are not maintaining your own internal versions.
     */
 
-    'version' => 'canary',
+    'version' => '0.2.0-rc1',
 
     /*
     |--------------------------------------------------------------------------
