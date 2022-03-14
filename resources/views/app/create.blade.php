@@ -18,13 +18,30 @@
                     placeholder="'Shopping List', 'Plans for the future', 'How to dispose of a body'...">
                 <hr class="bc-indigo" />
                 <br />
+                <h3 class="fw-600 white mt-5">
+                    Want to make your Scribbl public?
+                    &nbsp;
+                    <input
+                        type="checkbox"
+                        id="public"
+                        name="public"
+                    >
+                    </input>
+                </h3>
+                <h5 class="fw-600 white">
+                    Selecting this option will mean that the Scribbl will be publicly viewable
+                    by anyone on the platform.
+                </h5>
                 <h3 class="fw-600 white mt-10">
                     Time to scribbl!
                 </h3>
                 <br />
-                <textarea rows="5" id="description" name="description"
-                    class="input-lg min-h-50vh w-100pc bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-m6">
-                    </textarea>
+                <textarea
+                    rows="5"
+                    id="description"
+                    name="description"
+                    class="input-lg min-h-50vh w-100pc bw-0 fw-200 bg-indigo-lightest-10 white ph-indigo-lightest focus-white opacity-80 fs-m6"
+                ></textarea>
                 <hr class="bc-indigo" />
                 <br />
                 <button type="submit" class="button-lg w-100pc bg-indigo indigo-lightest bw-0 fw-300 fs-s3">
