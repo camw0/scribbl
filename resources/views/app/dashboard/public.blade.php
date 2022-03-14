@@ -9,7 +9,15 @@
         @endif
         <h2 class="white fs-l2 md-fs-xl1 fw-900 lh-2">
             <i data-feather="home" width="64" height="64"></i>
-            Welcome to <span class="border-b bc-indigo bw-4">{{ config('app.name') }}</span>
+            <span>
+                Welcome to <span class="border-b bc-indigo bw-4">{{ config('app.name') }}</span>
+                <a
+                    href="{{ route('app.dashboard.private') }}"
+                    class="button bg-white black fw-600 no-underline mx-5"
+                >
+                    Private Scribbls
+                </a>
+            </span>
         </h2>
         <div class="br-8 bg-indigo-lightest-10 p-5 md-p-l5 flex flex-wrap md-justify-between md-items-center">
             @if (count($scribbls) < 1)
