@@ -29,7 +29,7 @@
             </p>
             <h2 class="white mt-8 mb-4">
                 <i data-feather="file-text" width="16" height="16"></i>
-                Visibility&nbsp;
+                Visibility
                 <span class="indigo">
                     @if (!$scribbl->public)
                         Private
@@ -39,12 +39,12 @@
                 </span>
             </h2>
             <h2 class="white mt-4 mb-4">
+                <i data-feather="star" width="16" height="16"></i>
+                Total Stars <span class="indigo">{{ $scribbl->total_stars }}</span>
+            </h2>
+            <h2 class="white mt-4 mb-4">
                 <i data-feather="clock" width="16" height="16"></i>
                 Created <span class="indigo">{{ $scribbl->created_at->diffForHumans() }}</span>
-            </h2>
-            <h2 class="white mt-4 mb-8">
-                <i data-feather="clock" width="16" height="16"></i>
-                Updated <span class="indigo">{{ $scribbl->updated_at->diffForHumans() }}</span>
             </h2>
         </div>
     </div>
