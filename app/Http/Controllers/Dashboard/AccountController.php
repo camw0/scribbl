@@ -48,7 +48,7 @@ class AccountController extends Controller
         $user->save();
 
         // Redirect to account page after success.
-        return redirect()->route('app.account', ['user' => $user]);
+        return redirect()->route('app.account', ['user' => $user])->with('success', 'Email updated successfully.');
     }
 
     /**

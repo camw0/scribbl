@@ -62,7 +62,7 @@ class ScribblController extends Controller
         DB::table('users')->where('id', '=', $request->user()->id)->update(['total_scribbls' => $c + 1]);
 
         // Redirect to dashboard after success.
-        return redirect()->route('app.dashboard');
+        return redirect()->route('app.dashboard.private')->with('success', 'Scribbl created successfully.');
     }
 
     /**
@@ -92,7 +92,7 @@ class ScribblController extends Controller
         $scribbl->save();
 
         // Redirect to dashboard after success.
-        return redirect()->route('app.dashboard');
+        return redirect()->route('app.dashboard.private')->with('success', 'Scribbl edited successfully.');
     }
 
     /**
@@ -110,7 +110,7 @@ class ScribblController extends Controller
         // DELETED BY THE OWNER, not someone else lmao
         if ($scribbl->owner != Auth::user()->id) {
             // Return the unauthorised page
-            return view('app.unauthorised');
+            return view('app.unauthorised')->with('error', 'Unable to delete Scribbl: User does not own this Scribbl.');
         }
 
         // Find the Scribbl and delete it from
@@ -123,6 +123,6 @@ class ScribblController extends Controller
         $user = Auth::user();
 
         // Redirect to dashboard page with authenticated user and their scribbls.
-        return redirect()->route('app.dashboard', ['scribbls' => $scribbls, 'user' => $user]);
+        return redirect()->route('app.dashboard.private', ['scribbls' => $scribbls, 'user' => $user])->with('success', 'Scribbl deleted successfully.');
     }
 }

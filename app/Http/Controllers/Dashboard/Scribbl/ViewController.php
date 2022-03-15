@@ -38,7 +38,7 @@ class ViewController extends Controller
         // to redirect to the unauthorised page.
         if (Auth::user()->id != $scribbl->owner) {
             // Return unauthorised page.
-            return view('app.unauthorised');
+            return view('app.unauthorised')->with('error', 'Unable to view Scribbl: Marked as private.');
         } else {
             // Return view page with authenticated user and the requested Scribbl.
             return view('app.view', ['scribbl' => $scribbl]);
@@ -62,7 +62,7 @@ class ViewController extends Controller
         // to redirect to the unauthorised page.
         if (Auth::user()->id != $scribbl->owner) {
             // Return unauthorised page.
-            return view('app.unauthorised');
+            return view('app.unauthorised')->with('Unable to view Scribbl: Marked as private.');
         } else {
             // Return info page with authenticated user and the requested Scribbl.
             return view('app.info', ['scribbl' => $scribbl]);
@@ -94,7 +94,7 @@ class ViewController extends Controller
         // to redirect to the unauthorised page.
         if (Auth::user()->id != $scribbl->owner) {
             // Return unauthorised page.
-            return view('app.unauthorised');
+            return view('app.unauthorised')->with('error', 'Unable to edit Scribbl: User does not own this Scribbl.');
         } else {
             // Return edit page with the requested Scribbl.
             return view('app.edit', ['scribbl' => $scribbl]);
