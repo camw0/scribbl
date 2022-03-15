@@ -43,7 +43,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      */
-    protected function validator(array $data): RegisterValidator
+    protected function validator(array $data): Validation
     {
         // Validate the request and make sure
         // data is suitable for account creation.
