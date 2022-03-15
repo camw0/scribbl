@@ -23,32 +23,34 @@
             <div id="nav-items"
                 class="hidden flex sm-w-100pc flex-column md-flex md-flex-row md-justify-end items-center">
                 @guest @if (Route::has('login'))
-                    <a href="/login" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Login</a>
-                    @endif @if (Route::has('register'))
-                        <a href="/register" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Register</a>
-                    @endif
+                <a href="/login" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Login</a>
+                @endif @if (Route::has('register'))
+                <a href="/register" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Register</a>
+                @endif
                 @else
-                    <a href="/dashboard" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Your Scribbls</a>
-                    <a href="/dashboard/account" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Account</a>
-                    <a href="{{ route('logout') }}" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline"
-                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        Sign out
-                    </a>
-                    <a href="/dashboard/create" class="button bg-white black fw-600 no-underline mx-5">Create</a>
+                <a href="/dashboard" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Your Scribbls</a>
+                <a href="/dashboard/account" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline">Account</a>
+                <a href="{{ route('logout') }}" class="fs-s1 mx-3 py-3 indigo no-underline hover-underline"
+                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    Sign out
+                </a>
+                <a href="/dashboard/create" class="button bg-white black fw-600 no-underline mx-5">Create</a>
                 @endguest
-        </div>
-    </nav>
-
-    <main>
-        @yield('content')
-    </main>
-</div>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-    @csrf
-</form>
-<script>
-    feather.replace();
-</script>
+            </div>
+        </nav>
+        <main>
+            <section class="p-10 md-p-l5">
+                @yield('flashes')
+                @yield('content')
+            </section>
+        </main>
+    </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+    <script>
+        feather.replace();
+    </script>
 </body>
 
 </html>
