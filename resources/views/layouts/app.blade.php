@@ -38,6 +38,7 @@
                 @endguest
             </div>
         </nav>
+        <div id="react"></div>
         <main>
             <section class="p-10 md-p-l5">
                 @if (session('error'))
@@ -74,6 +75,7 @@
     <script>
         feather.replace();
     </script>
+    <script src="/public/assets/bundle.js"></script>
 </body>
 
 </html>

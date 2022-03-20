@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "build": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --progress",
+    "build:production": "yarn run clean && cross-env NODE_ENV=production ./node_modules/.bin/webpack --mode production"
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@types/react": "^17.0.41",
+    "@types/react-dom": "^17.0.14",
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "postcss": "^8.4.12",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
+    "react-is": "^17.0.2",
+    "source-map-loader": "^3.0.1",
+    "style-loader": "^3.3.1",
+    "styled-components": "^5.3.3",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0",
+    "webpack-assets-manifest": "^5.1.0",
+    "webpack-bundle-analyzer": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.16.7",
+    "webpack-cli": "^4.9.2"
+  }
+}
