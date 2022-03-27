@@ -26,7 +26,8 @@ class DashboardController extends Controller
     public function redirect()
     {
         // Redirect to the private dashboard.
-        return redirect()->route('app.dashboard.private');
+        return redirect()
+            ->route('app.dashboard.private');
     }
     
     /**

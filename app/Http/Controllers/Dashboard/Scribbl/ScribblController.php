@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Scribbl;
 
+use App\Models\User;
 use App\Models\Scribbl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,9 +42,13 @@ class ScribblController extends Controller
         }
 
         if (!$request['title']) {
-            return redirect()->route('app.dashboard.private')->with('error', 'A title was not assigned to the Scribbl.');
+            return redirect()
+                ->route('app.dashboard.private')
+                ->with('error', 'A title was not assigned to the Scribbl.');
         } else if (!$request['description']) {
-            return redirect()->route('app.dashboard.private')->with('error', 'A description was not assigned to the Scribbl.');
+            return redirect()
+                ->route('app.dashboard.private')
+                ->with('error', 'A description was not assigned to the Scribbl.');
         }
 
         // Create a Scribbl using the model
@@ -57,9 +62,9 @@ class ScribblController extends Controller
         $s->save();
 
         // Update the user's total Scribbl count.
-        $craw = DB::table('users')->select('total_scribbls')->where('id', '=', $request->user()->id)->get();
+        $craw = User::select('total_scribbls')->where('id', '=', $request->user()->id)->get();
         $c = $craw[0]->total_scribbls;
-        DB::table('users')->where('id', '=', $request->user()->id)->update(['total_scribbls' => $c + 1]);
+        User::where('id', '=', $request->user()->id)->update(['total_scribbls' => $c + 1]);
 
         // Redirect to dashboard after success.
         return redirect()->route('app.dashboard.private')->with('success', 'Scribbl created successfully.');
@@ -86,9 +91,11 @@ class ScribblController extends Controller
         // and update its information with
         // the new data from the request.
         $scribbl = Scribbl::find($request['id']);
+
         $scribbl->title = $request['title'];
         $scribbl->description = $request['description'];
         $scribbl->public = $p;
+
         $scribbl->save();
 
         // Redirect to dashboard after success.
@@ -123,6 +130,8 @@ class ScribblController extends Controller
         $user = Auth::user();
 
         // Redirect to dashboard page with authenticated user and their scribbls.
-        return redirect()->route('app.dashboard.private', ['scribbls' => $scribbls, 'user' => $user])->with('success', 'Scribbl deleted successfully.');
+        return redirect()
+            ->route('app.dashboard.private', ['scribbls' => $scribbls, 'user' => $user])
+            ->with('success', 'Scribbl deleted successfully.');
     }
 }

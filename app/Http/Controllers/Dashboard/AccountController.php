@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\Scribbl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -25,11 +26,8 @@ class AccountController extends Controller
      */
     public function index(): Renderable
     {
-        // Get the authenticated user.
-        $user = Auth::user();
-
         // Return account page with authenticated user.
-        return view('app.account', ['user' => $user]);
+        return view('app.account', ['user' => Auth::user()]);
     }
 
     /**
@@ -44,11 +42,14 @@ class AccountController extends Controller
 
         // Get the authenticated user and update their email.
         $user = Auth::user();
+
         $user->email = $request->email;
         $user->save();
 
         // Redirect to account page after success.
-        return redirect()->route('app.account', ['user' => $user])->with('success', 'Email updated successfully.');
+        return redirect()
+            ->route('app.account', ['user' => $user])
+            ->with('success', 'Email updated successfully.');
     }
 
     /**
@@ -59,7 +60,7 @@ class AccountController extends Controller
         $user = Auth::user();
 
         // This isn't the cleanest method, but it works for now.
-        DB::table('scribbls')->where('owner', '=', Auth::user()->id)->delete();
+        Scribbl::where('owner', '=', $user->id)->delete();
 
         // Delete the user model from the system.
         $user->delete();
