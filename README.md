@@ -39,7 +39,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 
 mkdir /var/www/scribbl
 cd /var/www/scribbl
-curl -Lo panel.tar.gz https://github.com/cmrxnn/scribbl/releases/latest/download/scribbl.tar.gz
+curl -Lo scribbl.tar.gz https://github.com/cmrxnn/scribbl/releases/latest/download/scribbl.tar.gz
 tar -xzvf scribbl.tar.gz
 chmod -R 755 storage/* bootstrap/cache/
 
